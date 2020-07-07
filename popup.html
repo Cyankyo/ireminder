@@ -1,31 +1,281 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <style>
-        div {
-            display: block;
-            padding: 5px;
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+        /*div {*/
+        /*    display: block;*/
+        /*    padding: 5px;*/
+        /*}*/
+
+        /*.setButton {*/
+        /*    background-color: rgb(85, 132, 255);*/
+        /*    border-color: rgb(85, 132, 255);*/
+        /*    color: #ffffff;*/
+        /*    margin-right: 15px;*/
+        /*    margin-top: 5px;*/
+        /*    border-style: solid;*/
+        /*}*/
+
+        /*.removeButton {*/
+        /*    background-color: #F68207;*/
+        /*    border-color: #F68207;*/
+        /*    color: #ffffff;*/
+        /*    margin-right: 15px;*/
+        /*    border-style: solid;*/
+        /*    margin-top: 5px;*/
+        /*}*/
+
+        /*.removeAllButton {*/
+        /*    background-color: rgb(255, 48, 0);*/
+        /*    border-color: rgb(255, 48, 0);*/
+        /*    color: #ffffff;*/
+        /*    margin-right: 15px;*/
+        /*    border-style: solid;*/
+        /*    margin-top: 5px;*/
+        /*}*/
+        .alarmName {
+            margin-right: 10px;
+            width: 150px;
         }
-        .setButton {
-          background-color: 	rgb(107, 140, 240);
+
+        .alarmTime {
+            margin-right: 10px;
+            width: 150px;
         }
-        .removeButton {
-          background-color: rgb(236, 148, 174);
+
+        .line {
+            margin-bottom: 10px;
         }
+
+        .model {
+            box-shadow: 0 1px 0 0 #D7D7D7;
+            padding: 10px 16px;
+        }
+
+        html {
+            font-family: sans-serif;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+
+        td {
+            border: none;
+            border-bottom: dashed 1px #ddd;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        /*.pure-table {*/
+        /*    border-collapse: collapse;*/
+        /*    border-spacing: 0;*/
+        /*    empty-cells: show;*/
+        /*    border: 1px solid #cbcbcb;*/
+        /*}*/
+
+        /*.pure-table caption {*/
+        /*    color: #000;*/
+        /*    font: italic 85%/1 arial,sans-serif;*/
+        /*    !*padding: 1em 0;*!*/
+        /*    text-align: center;*/
+        /*}*/
+
+        /*.pure-table td,.pure-table th {*/
+        /*    border-left: 1px solid #cbcbcb;*/
+        /*    border-width: 0 0 0 1px;*/
+        /*    !*font-size: inherit;*!*/
+        /*    !*margin: 0;*!*/
+        /*    overflow: visible;*/
+        /*    padding: 10px;*/
+        /*}*/
+
+        /*.pure-table thead {*/
+        /*    background-color: #e0e0e0;*/
+        /*    color: #000;*/
+        /*    text-align: left;*/
+        /*    vertical-align: bottom;*/
+        /*}*/
+
+        /*.pure-table td {*/
+        /*    background-color: transparent;*/
+        /*}*/
+
+        /*.pure-table-bordered td {*/
+        /*    border-bottom: 1px solid #cbcbcb;*/
+        /*}*/
+
+        /*.pure-table-bordered tbody>tr:last-child>td {*/
+        /*    border-bottom-width: 0;*/
+        /*}*/
     </style>
-  </head>
-  <body>
-      <div>
-          <label>间隔(分钟): </label>
-          <input id="interval" size="30" value="1"></input>
-      </div>
-    <div>
-        <label>提示文字:&nbsp;&nbsp;</label>
-        <input id="tip" size="30" value="休息一下眼睛吧!"></input>
+
+    <link href="css/main.css" rel="stylesheet">
+</head>
+<body style="width: 400px">
+<!--<div>-->
+<!--    <label>间隔(分钟): </label>-->
+<!--    <input id="interval" size="30" value="1"/>-->
+<!--</div>-->
+<!--<div>-->
+<!--    <label>提示文字:&nbsp;&nbsp;</label>-->
+<!--    <input id="tip" size="30" value="休息一下眼睛吧!"/>-->
+<!--</div>-->
+<!--<div>-->
+<!--    <label>描述文字:&nbsp;&nbsp;</label>-->
+<!--    <input id="desc" size="30" value="xxxx"/>-->
+<!--</div>-->
+<div style="position: relative; margin:10px">
+
+    <!--    <div class="next-form-item next-left next-medium next-error">-->
+    <!--        <label>间隔(分钟): </label>-->
+    <!--        <span class="next-input next-medium" style="width: 200px;">-->
+    <!--        <input id="interval"-->
+    <!--               placeholder="1"-->
+    <!--               height="100%"-->
+    <!--               type="text"-->
+    <!--               autocomplete="off"-->
+    <!--               value=""></span>-->
+
+
+    <!--    </div>-->
+    <div style="margin-bottom: 10px"></div>
+    <div class="model">
+        <div class="line">
+            <input type="radio" name="interval" checked="checked">
+            <label>每隔</label>
+            <span class="next-input next-medium">
+                <input id="cycleTime"
+                       name="value"
+                       placeholder="30"
+                       height="100%"
+                       type="text"
+                       autocomplete="off"
+                       value=""></span>分钟
+        </div>
+
+        <div class="line">
+            <input type="radio" name="interval">
+            <label>每天</label>
+            <span class="next-input next-medium">
+<!--                <input id="everyDay"-->
+                <!--               placeholder="12:10:10"-->
+                <!--               height="100%"-->
+                <!--               type="text"-->
+                <!--               autocomplete="off"-->
+                <!--               value="">-->
+                <input type="time" id="everyDay"/>
+            </span>
+        </div>
+        <div class="line">
+            <input type="radio" name="interval">
+            <label>指定</label>
+            <!--            <span class="next-input next-medium" style="width: 150px;">-->
+            <!--        <input id="time"-->
+            <!--               placeholder="2020-11-11 12:10:10"-->
+            <!--               height="100%"-->
+            <!--               type="text"-->
+            <!--               autocomplete="off"-->
+            <!--               value=""></span>-->
+            <span class="next-input next-medium">
+
+            <input type="datetime-local" id="specificTime"/>
+                            </span>
+
+        </div>
+        <div class="line">
+            <input type="radio" name="interval">
+            <label>延迟</label>
+            <span class="next-input next-medium">
+                <input id="delayTime"
+                       placeholder="15"
+                       height="100%"
+                       type="text"
+                       autocomplete="off"
+                       value="">
+
+            </span>
+        </div>
+        <div class="next-form-item next-left next-medium next-error">
+            <label>提示文字:</label><br/>
+            <span class="next-input next-medium" style="width: 100%;">
+                <input id="tip"
+                       placeholder="休息一下眼睛吧!"
+                       height="100%"
+                       type="text"
+                       autocomplete="off"
+                       value=""></span>
+
+
+        </div>
+        <!--    <div class="next-form-item next-left next-medium">-->
+        <!--        <label>描述文字:&nbsp;&nbsp;</label>-->
+        <!--        <span class="next-input next-medium" style="width: 200px;">-->
+        <!--        <input id="desc"-->
+        <!--               placeholder="……"-->
+        <!--               height="100%"-->
+        <!--               type="text"-->
+        <!--               autocomplete="off"-->
+        <!--               value=""></span>-->
+        <!--    </div>-->
+        <button id="setRemindButton" type="button" class="next-btn next-medium next-btn-primary"
+                style="margin-right: 10px;">
+            设置提醒
+        </button>
     </div>
-    <button id="setRemindButton" class="setButton">设置提醒</button> 
-    <button id="removeRemindButton" class="removeButton">取消提醒</button>
-    <script src="popup.js"></script>
-  </body>
+
+    <!--    <button id="setRemindButton" type="button" class="next-btn next-medium next-btn-primary"-->
+    <!--            style="margin-right: 10px;">-->
+    <!--        设置提醒-->
+    <!--    </button>-->
+    <!--    &lt;!&ndash;    <button id="removeRemindButton" type="button" class="next-btn next-medium next-btn-primary"&ndash;&gt;-->
+    <!--    &lt;!&ndash;            style="margin-right: 10px;">&ndash;&gt;-->
+    <!--    &lt;!&ndash;        取消提醒&ndash;&gt;-->
+    <!--    &lt;!&ndash;    </button>&ndash;&gt;-->
+    <!--    <button id="removeAllButton" type="button" class="next-btn next-medium next-btn-primary next-btn-warning"-->
+    <!--            style="margin-right: 10px;">移除全部-->
+    <!--    </button>-->
+</div>
+<div class="model">
+    <div style="margin: 10px">
+        <table class="pure-table pure-table-bordered">
+            <thead>
+            <tr>
+                <td><input name="ic" type="checkbox" id="allSelectCheckBox"></td>
+                <td class="alarmName">通知</td>
+                <td class="alarmTime">下一次通知时间</td>
+                <td>
+                    <input name="btn_del" class="next-btn next-medium next-btn-primary next-btn-warning" type="button"
+                           value="删除" id="allDeleteBtn"/>
+                </td>
+            </tr>
+            </thead>
+
+
+        </table>
+
+        <table id="alarmTable" class="pure-table pure-table-bordered">
+            <!--        <tr>-->
+            <!--            <td class="next-table-cell next-table-header-node next-table-selection"><input name="ic" type="checkbox"/>-->
+            <!--            </td>-->
+            <!--            <td>11111</td>-->
+            <!--            <td>11：11：11</td>-->
+            <!--            <td>-->
+            <!--                <input name="btn_del" class="next-btn next-medium next-btn-primary next-btn-warning" type="button"-->
+            <!--                       value="删除"/>-->
+            <!--            </td>-->
+            <!--        </tr>-->
+        </table>
+    </div>
+</div>
+<script src="popup.js"></script>
+</body>
 </html>
