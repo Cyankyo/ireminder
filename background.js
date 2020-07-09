@@ -3,8 +3,6 @@
 // found in the LICENSE file.
 
 'use strict';
-let alarmSet = new Set();
-
 function remove(mouseEvent, alarmTable) {
     var rowIndex = mouseEvent.srcElement.parentElement.parentElement.rowIndex;
     var line = mouseEvent.srcElement.parentElement.parentElement;
@@ -16,7 +14,6 @@ function remove(mouseEvent, alarmTable) {
     var alarmName = line.children[1].textContent;
     chrome.alarms.clear(alarmName, function (wasCleared) {
         if (wasCleared) {
-            // createNotification("删除成功");
         }
     });
 }
@@ -59,11 +56,6 @@ function setReminder(id, interval, tip) {
     
 };
 
-function removeAllReminder() {
-    chrome.alarms.clearAll();
-    console.log("remove all reminder success")
-    createNotification("remove all reminder success")
-};
 
 function removeReminder(name) {
     console.log("clear alarm:{}" + name);
