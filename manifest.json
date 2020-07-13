@@ -1,7 +1,7 @@
 {
-	"name": "ireminder",
+	"name": "定时提醒",
 	"version": "2.0.0",
-	"description": "remind",
+	"description": "可以设置周期提醒，延时提醒，定时提醒等",
 	"manifest_version": 2,
 	"permissions": ["notifications", "alarms", "storage"],
 	"background": {
